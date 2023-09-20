@@ -8,14 +8,14 @@ buildscript {
 
 plugins {
     id("java")
-    id('org.jetbrains.intellij') version '1.10.1'
+    id('org.jetbrains.intellij') version '1.13.3'
 }
 
 group 'io.github.newhoo.mysql'
 version '1.1.0'
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_1_8
+    sourceCompatibility = JavaVersion.VERSION_17
 }
 
 repositories {
@@ -29,8 +29,16 @@ dependencies {
 }
 
 intellij {
-    version.set('2018.1.7')
-    updateSinceUntilBuild.set(false)
-    downloadSources.set(true)
-    sandboxDir.set("${rootProject.rootDir}/idea-sandbox")
+    version = "2023.1"
+    //version = "LATEST-EAP-SNAPSHOT"
+    type = "IC"
+    plugins = ["java"]
+    pluginName = "Save Actions Tool"
+    // Do not touch the plugin.xml file
+    updateSinceUntilBuild = false
+}
+
+
+listProductsReleases {
+    sinceBuild = "231.*"
 }
